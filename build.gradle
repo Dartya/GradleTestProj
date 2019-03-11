@@ -9,7 +9,7 @@ version '1.0-SNAPSHOT'
 sourceCompatibility = 1.8
 
 application {
-    mainClassName = 'com.example.circle.Circle'
+    mainClassName = 'com.example.Main'
 }
 
 repositories {
