@@ -1,10 +1,14 @@
 package com.example;
 
 import com.example.Controllers.SampleController;
+import com.sun.javafx.scene.control.skin.DatePickerSkin;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.DatePicker;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
@@ -12,6 +16,7 @@ import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDate;
 
 public class Main extends Application {
     private static final String FXML_MAIN = "/Sample.fxml";
@@ -23,14 +28,31 @@ public class Main extends Application {
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
         createGUI();
+        /*DatePicker datePicker = new DatePicker(LocalDate.now());
+        try {
+            BorderPane root = new BorderPane();
+            Scene scene = new Scene(root, 400, 400);
+
+            DatePickerSkin datePickerSkin = new DatePickerSkin(datePicker);
+            Node popupContent = datePickerSkin.getPopupContent();
+
+            root.setCenter(popupContent);
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        datePicker.valueProperty().addListener((observable, oldValue, newValue) -> {
+            System.out.println("New Value: " + newValue);
+        });*/
     }
 
     private void createGUI() {
         currentRoot = loadFXML(); //возвращает сконфигурированный Node (Parent)
-        Scene scene = new Scene(currentRoot, 850, 700);
+        Scene scene = new Scene(currentRoot, 350, 350);
         primaryStage.setScene(scene);
-        primaryStage.setMinHeight(750);
-        primaryStage.setMinWidth(760);
+        primaryStage.setMinHeight(350);
+        primaryStage.setMinWidth(350);
         primaryStage.show();
     }
 
