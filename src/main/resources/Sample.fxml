@@ -33,7 +33,7 @@
                   </TextArea>
                   <HBox alignment="TOP_CENTER" prefHeight="30.0" prefWidth="253.0">
                      <children>
-                        <Button fx:id="addButton" mnemonicParsing="false" onAction="#addAction" prefWidth="100.0" text="Добавить">
+                        <Button fx:id="addButton" defaultButton="true" mnemonicParsing="false" onAction="#addAction" prefWidth="100.0" text="Добавить">
                            <HBox.margin>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </HBox.margin>
