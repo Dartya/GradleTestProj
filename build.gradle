@@ -25,6 +25,8 @@ repositories {
     mavenCentral()
 }
 
+compileJava.options.encoding = 'UTF-8'
+
 dependencies {
     implementation 'org.jfxtras:jfxtras-common:8.0-r6'
     implementation 'org.jfxtras:jfxtras-icalendarfx:8.0-r6'

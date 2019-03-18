@@ -13,12 +13,15 @@ import javafx.scene.control.ListView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
 import javafx.stage.Stage;
+import jfxtras.scene.control.CalendarPicker;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.loadui.testfx.GuiTest;
 import org.testfx.api.FxToolkit;
 import org.testfx.framework.junit.ApplicationTest;
+
+import java.util.Date;
 
 /*
 Полезные ссылки с примерами тестов:
@@ -33,18 +36,18 @@ public class MainTest extends ApplicationTest {
     Parent mainNode;
 
     @Before
-    public void setUp () throws Exception {
+    public void setUp() throws Exception {
     }
 
     @After
-    public void tearDown () throws Exception {
+    public void tearDown() throws Exception {
         FxToolkit.hideStage();
         release(new KeyCode[]{});
         release(new MouseButton[]{});
     }
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) throws Exception {
         mainNode = FXMLLoader.load(Main.class.getResource("/Sample.fxml"));
         primaryStage.setScene(new Scene(mainNode));
         primaryStage.show();
@@ -147,18 +150,22 @@ public class MainTest extends ApplicationTest {
         String s1 = "Make integration tests";
         String s2 = "make unit tests";
         ListView<String> listView = (ListView) GuiTest.find("#noteList");
+        CalendarPicker calendarPicker = (CalendarPicker) GuiTest.find("#calendarPicker");
+        Date date = calendarPicker.getDisplayedCalendar().getTime();
+        int day = date.getDate();
+        String nextDay = ""+(day+1);
 
         //действия
         clickOn("#textArea");
         write(s1);
         clickOn("#addButton");
 
-        clickOn((Node) lookup("20").query());
+        clickOn((Node) lookup(nextDay).query());
         clickOn("#textArea");
         write(s2);
         clickOn("#addButton");
 
-        clickOn((Node) lookup("17").query());
+        clickOn((Node) lookup(nextDay).query());
         clickOn("#textArea");
         write("Now delete 1st element");
         clickOn("#addButton");
