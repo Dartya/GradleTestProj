@@ -40,6 +40,11 @@ tasks.withType(FindBugs) {
     }
 }
 
+run {
+    jvmArgs "­XX:+UnlockCommercialFeatures", "­XX:+FlightRecorder",
+            "­XX:StartFlightRecording=duration=60s,filename=myrecording.jfr"
+}
+
 dependencies {
     implementation 'org.jfxtras:jfxtras-common:8.0-r6'
     implementation 'org.jfxtras:jfxtras-icalendarfx:8.0-r6'
