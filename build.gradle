@@ -41,8 +41,8 @@ tasks.withType(FindBugs) {
 }
 
 run {
-    jvmArgs "­XX:+UnlockCommercialFeatures", "­XX:+FlightRecorder",
-            "­XX:StartFlightRecording=duration=60s,filename=myrecording.jfr"
+    jvmArgs "-XX:+UnlockCommercialFeatures", "-XX:+FlightRecorder",
+            "-XX:StartFlightRecording=duration=60s,filename=myrecording.jfr"
 }
 
 dependencies {
