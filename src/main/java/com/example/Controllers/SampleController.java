@@ -16,28 +16,29 @@ import java.util.*;
 public class SampleController {
     public CalendarPicker calendarPicker;
     public TextArea textArea;
+    /*
     public Button addButton ;
     public Button deleteButton;
+    */
     public ListView noteList;
     private int day, month, year;
     private String s;
     private ArrayList<String> arrayList = new ArrayList<>();
 
     private HashMap<String, ArrayList<String>> hmMessage = new HashMap<>();
-    ObservableList<String> noteObservList = FXCollections.observableList(new ArrayList<>());
+    private ObservableList<String> noteObservList = FXCollections.observableList(new ArrayList<>());
 
     public void initialize(){
 
         noteList.setItems(noteObservList);
         System.out.println(calendarPicker.getDisplayedCalendar().getTime());
         s = getDate(calendarPicker.getDisplayedCalendar().getTime());
-        checkString(s, arrayList);
+        checkString(s);
 
         calendarPicker.calendarProperty().addListener(new ChangeListener<Calendar>() {
             @Override
             public void changed(ObservableValue<? extends Calendar> observable, Calendar oldValue, Calendar newValue) {
                 String s;
-                ArrayList<String> arrayList = new ArrayList<>();
                 if (newValue != null) {
                     s = getDate(newValue.getTime());
                     System.out.println(s);
@@ -46,7 +47,7 @@ public class SampleController {
                     System.out.println(s);
                 }
                 //у нас есть дата s, ищем ее в хэшмэп
-                checkString(s, arrayList);
+                checkString(s);
             }
         });
     }
@@ -63,7 +64,7 @@ public class SampleController {
         }
     }
 
-    private void checkString (String s, ArrayList<String> arrayList){
+    private void checkString (String s){
         if (!(hmMessage.get(s) == null)) {                                      //если по дате находится эррейлист
             arrayList = hmMessage.get(s);                                       //то получаем этот эррейлист
             noteObservList = FXCollections.observableList(arrayList);           //передаем его обсерваблЛисту - оболочке найденного эррейлиста

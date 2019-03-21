@@ -149,7 +149,6 @@ public class MainTest extends ApplicationTest {
         //подготовка данных
         String s1 = "Make integration tests";
         String s2 = "make unit tests";
-        ListView<String> listView = (ListView) GuiTest.find("#noteList");
         CalendarPicker calendarPicker = (CalendarPicker) GuiTest.find("#calendarPicker");
         Date date = calendarPicker.getDisplayedCalendar().getTime();
         int day = date.getDate();

@@ -13,7 +13,6 @@ import java.io.IOException;
 public class Main extends Application {
     private static final String FXML_MAIN = "/Sample.fxml";
     private Stage primaryStage;             //сцена главного окна
-    private SampleController mainController;//контроллер сцены главного окна
     private FXMLLoader fxmlLoader;          //загрузчик файлов FXML
     private AnchorPane currentRoot;         //коренной Node (Parent)
 
@@ -39,7 +38,6 @@ public class Main extends Application {
 
         try {
             node = (AnchorPane) fxmlLoader.load();
-            mainController = fxmlLoader.getController();
             primaryStage.setTitle("JCalendarFX v0.1");
 
         } catch (IOException e) {
